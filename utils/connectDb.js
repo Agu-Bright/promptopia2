@@ -8,7 +8,7 @@ const connectDb = async () => {
   }
   try {
     await mongoose.connect(process.env.MONGO_URI, {
-      dbName: "Promptopia",
+      dbName: "Promptopia2",
       useUnifiedTopology: true,
       useNewUrlParser: true,
     });

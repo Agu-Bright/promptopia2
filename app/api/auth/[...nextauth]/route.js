@@ -14,8 +14,8 @@ const handler = NextAuth({
   callbacks: {
     async session({ session }) {
       //get user data and set it to the session storage
-      const sessionUser = await User.findOne({ email: session.user.id });
-      session.user.id = sessionUser?._id.toString();
+      const sessionUser = await User.findOne({ email: session.user.email });
+      session.user.id = sessionUser._id.toString();
       return session;
     },
     async signIn({ profile }) {
@@ -30,7 +30,7 @@ const handler = NextAuth({
           await User.create({
             email: profile.email,
             userName: profile.name.replace(" ", "").toString(),
-            image: profile.image,
+            image: profile.picture,
           });
         }
         return true;
